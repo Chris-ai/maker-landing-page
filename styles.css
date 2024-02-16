@@ -224,6 +224,17 @@ li {
   background-color: var(--cyan);
 }
 
+.free-plan p {
+  color: var(--white);
+}
+.regular-plan p {
+  color: var(--black);
+}
+
+.per-month {
+  color: var(--black);
+}
+
 .regular-plan .pricing-plan-icon {
   top: -2.25rem;
 }
