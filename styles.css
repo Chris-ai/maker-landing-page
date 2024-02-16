@@ -74,6 +74,7 @@ main{
     display: flex;
     flex-direction: column;
     row-gap: 144px;
+    overflow-x: hidden;
 }
 
 .mobile-hero-image {
@@ -86,6 +87,10 @@ main{
    flex-direction: column; 
 }
 
+.bg-hero-squiggle {
+    display: none;
+}
+
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -95,17 +100,8 @@ main{
     text-align: center;
     padding: 0 var(--small-padding);
 }
-
-.hero-content h1 {
-    font-size: var(--font-large);
-    font-weight: 800;
-    line-height: 40px;
-}
-
-.hero-content p {
-    color: var(--grey);
-    font-size: var(--font-small);
-    line-height: 25px;
+.illustration-hero-desktop {
+    display: none;
 }
 
 .hero-content h1 span {
@@ -125,17 +121,14 @@ main{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    row-gap: 32px;
+    gap: 32px;
 }
 
 .about-item-content{
     display: grid;
     place-items: center;
-    row-gap: 12px;
-}
-
-.about-item p {
-    color: var(--grey)
+    gap: 12px;
+    max-width: 340px;
 }
 
 .illustration-container {
@@ -157,6 +150,7 @@ main{
     flex-direction: column;
     row-gap: 56px;
     padding: 0 var(--small-padding);
+    align-items: center;
 }
 
 .pricing-header {
@@ -173,7 +167,8 @@ main{
 .pricing-plans {
     display: flex;
     flex-direction: column;
-    row-gap: 32px;
+    gap: 32px;
+    
 }
 
 .plan-heading {
@@ -189,6 +184,7 @@ main{
     padding: 48px 30px 32px 30px;
     border-radius: 0.5rem;
     row-gap: 26px;
+    max-width: 445px;
 }
 
 .free-plan {
@@ -250,6 +246,8 @@ footer {
     margin-top: 144px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     row-gap: 24px;
     position: relative;
     text-align: center;
@@ -259,7 +257,8 @@ footer {
 .notification-form {
     display: flex;
     flex-direction: column;
-    row-gap: 12px;
+    gap: 12px;
+    max-width: 480px;
 }
 footer img {
     position: absolute;
@@ -277,10 +276,14 @@ footer img {
     background: var(--navy);
     border-radius: 99999px;
     outline: none;
-    border: none;
+    border: 2px solid var(--navy);
     padding: 12px 18px;
+    flex: 1;
+    width: 320px;
 }
-
+.notification-form input:active, input:focus {
+    border: 2px solid var(--cyan);
+}
 .notification-form button {
     border-radius: 9999px;
     font-weight: 800;
@@ -288,5 +291,112 @@ footer img {
     border: none;
     color: var(--black);
     background-color: var(--cyan);
-    padding: .825em 0;
+    padding: .825em 1.125em;
+    border: 2px solid var(--cyan);
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
+
+.notification-form button:hover,  button:active {
+    background-color: transparent;
+    color: white;
+}
+
+@media only screen and (min-width: 680px) {
+    .notification-form {
+        flex-direction: row;
+    }
+
+    .about {
+        padding: 0 97px;
+    }
+
+    .about-item {
+        flex-direction: row;
+        column-gap: 55px;
+    }
+
+    .about-item:nth-child(even) {
+        align-self: flex-start;
+    }
+
+    .about-item:nth-child(odd) {
+        align-self: flex-end;
+    }
+
+    .about-item-content {
+        place-items: start;
+        text-align: start;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .mobile-hero-image {
+        display: none;
+    }
+
+    .illustration-hero-desktop {
+        display: block;
+    }
+
+    .hero-content {
+        display: grid;
+        grid-template-columns: repeat(3, 457px);
+        place-items: center;
+    }
+
+    .hero-cube {
+        position: relative;
+    }
+    .bg-hero-squiggle {
+        display: block;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        z-index: -1;
+    }
+
+    nav{
+        place-items: start;
+    }
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .pricing-plans {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .free-plan{
+        margin: .5rem 0;
+    }
+
+    .regular-plan {
+        margin-top: 0;
+    }
+
+    .about {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .about-item {
+        flex-direction: column;
+    }
+    
+    .about-item:nth-child(even) {
+        align-self: flex-end;
+        margin-top: 1rem;
+    }
+    
+    .about-item:nth-child(odd) {
+        align-self: flex-start;
+        margin-bottom: 1rem;
+    }
+    
+    .about-item-content {
+        place-items: center;
+        text-align: center;
+    }
 }
