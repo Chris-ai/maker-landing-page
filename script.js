@@ -3,6 +3,10 @@ const toast = document.getElementById("toast");
 const errorMessageContainer = document.getElementById("error-message");
 const emailInput = document.getElementById("email-input");
 
+const emptyEmailErrorMessage = "Oops! Please add your email";
+const invalidEmailErrorMessage =
+  "Oops! That doesn't look like an email address";
+
 const validateEmail = (email) => {
   return String(email)
     .toLowerCase()
@@ -18,12 +22,14 @@ const logSuccess = () => {
   }, 2000);
 };
 
-const showError = () => {
+const showError = (errorMessage) => {
+  errorMessageContainer.textContent = errorMessage;
   emailInput.classList.add("input-error");
   errorMessageContainer.classList.add("showErrorMessage");
 };
 
 const sendNotification = () => {
+  errorMessageContainer.textContent = "";
   errorMessageContainer.classList.remove("showErrorMessage");
   emailInput.classList.remove("input-error");
   emailInput.value = "";
@@ -35,9 +41,11 @@ function logSubmit(event) {
   const data = new FormData(event.target);
   const { email } = Object.fromEntries(data.entries());
 
-  if (!validateEmail(email)) {
-    showError();
-  } else if (email) {
+  if (!email) {
+    showError(emptyEmailErrorMessage);
+  } else if (!validateEmail(email)) {
+    showError(invalidEmailErrorMessage);
+  } else {
     sendNotification();
   }
 }
