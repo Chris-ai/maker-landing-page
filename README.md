@@ -23,7 +23,7 @@
 ## 🟢 Live Demo
 
 <h3 align="justify">
-Access the website here: <a href="">[link]</a>
+Access the website here: <a href="https://chris-ai.github.io/maker-landing-page/">[link]</a>
 </h3>
 
 ## 📚 Tech Stack
